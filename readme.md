@@ -4,7 +4,7 @@ A basic app to test repaint rate of JS libraries.
 
 Highly inspired (and copied) by @ryanflorence HYPE conference.
 
-You can test it at https://mathieuancelin.github.io/js-repaint-perfs/
+You can test it at https://classicoldsong.github.io/js-repaint-perfs/
 
 ## Done
 
