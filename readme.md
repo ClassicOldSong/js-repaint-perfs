@@ -11,6 +11,7 @@ You can test it at https://mathieuancelin.github.io/js-repaint-perfs/
 * [Angular](https://angularjs.org/)
 * [Angular 2.0](https://angular.io/)
 * [Aurelia](http://aurelia.io/)
+* [ef.js](https://github.com/ClassicOldSong/ef.js)
 * [Elem](https://github.com/mathieuancelin/Elem)
 * [elem-vdom](https://github.com/mathieuancelin/elem-vdom)
 * [Ember](http://emberjs.com/)

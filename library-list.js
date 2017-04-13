@@ -71,6 +71,7 @@
     { type: 'naive', id: 'hyperapp', url: './hyperapp', label: 'DBMON HyperApp' },
     { type: 'naive', id: 'stemjs', url: './stemjs/index.html', label: 'DBMON StemJS'},
     { type: 'optimized', id: 'stemjs', url: './stemjs-optimized', label: 'DBMON StemJS'},
+    { type: 'naive', id: 'ef.js', url: './ef/index.html', label: 'DBMON ef.js'}
   ];
 
   function Library() {

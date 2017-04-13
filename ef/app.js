@@ -1,0 +1,64 @@
+var _app = new ef('\n\
+>table.table.table-striped.latest-data\n\
+	>tbody\n\
+		+trs');
+
+var _tr = new ef('\n\
+>tr\n\
+	>td.dbname\n\
+		.{{dbname}}\n\
+	>td.query-count\n\
+		>span.{{lastSample.countClassName}}\n\
+			.{{lastSample.nbQueries}}\n\
+	+tds');
+
+var _td = new ef('\n\
+>td.{{class}}\n\
+	.{{formatElapsed}}\n\
+	>div.popover.left\n\
+		>div.popover-content\n\
+			.{{query}}\n\
+		>div.arrow');
+
+var app = _app.render()
+
+function renderTd(tr, q, index) {
+	if (!tr.tds[index]) {
+		var td = _td.render()
+		tr.tds.push(td)
+		td.$subscribe('elapsedClassName', function(val) {
+			td.$data.class = ('Query ' + val).trim()
+		})
+	}
+	tr.tds[index].$data = {
+		elapsedClassName: q.elapsedClassName,
+		formatElapsed: q.formatElapsed,
+		query: q.query
+	}
+}
+
+function renderTr(db, index) {
+	if (!app.trs[index]) app.trs.push(_tr.render())
+	var tr = app.trs[index]
+	tr.$data = {
+		dbname: db.dbname,
+		lastSample: {
+			countClassName: db.lastSample.countClassName,
+			nbQueries: db.lastSample.nbQueries
+		}
+	}
+	for (var i in db.lastSample.topFiveQueries) renderTd(tr, db.lastSample.topFiveQueries[i], i)
+}
+
+function renderTb(databases) {
+	for (var i in databases) renderTr(databases[i], i)
+}
+
+function loadSamples() {
+  renderTb(ENV.generateData(true).toArray());
+  Monitoring.renderRate.ping();
+  setTimeout(loadSamples, ENV.timeout);
+}
+
+document.querySelector('#app').appendChild(app.$element)
+loadSamples()
