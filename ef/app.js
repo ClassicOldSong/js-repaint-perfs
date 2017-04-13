@@ -13,7 +13,7 @@ var _tr = new ef('\n\
 	+tds');
 
 var _td = new ef('\n\
->td.{{class}}\n\
+>td.{{elapsedClassName}}\n\
 	.{{formatElapsed}}\n\
 	>div.popover.left\n\
 		>div.popover-content\n\
@@ -23,13 +23,7 @@ var _td = new ef('\n\
 var app = _app.render()
 
 function renderTd(tr, q, index) {
-	if (!tr.tds[index]) {
-		var td = _td.render()
-		tr.tds.push(td)
-		td.$subscribe('elapsedClassName', function(val) {
-			td.$data.class = ('Query ' + val).trim()
-		})
-	}
+	if (!tr.tds[index]) tr.tds.push(_td.render())
 	tr.tds[index].$data = {
 		elapsedClassName: q.elapsedClassName,
 		formatElapsed: q.formatElapsed,
