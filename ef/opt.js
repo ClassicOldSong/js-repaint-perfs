@@ -45,9 +45,9 @@ function renderTr(db, index) {
 }
 
 function renderTb(databases) {
-	// ef.inform()
+	ef.inform()
 	for (var i in databases) renderTr(databases[i], i)
-	// ef.exec()
+	ef.exec()
 }
 
 function loadSamples() {
