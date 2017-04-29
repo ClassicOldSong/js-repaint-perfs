@@ -13,7 +13,7 @@ var _tr = new ef('\n\
 	+tds');
 
 var _td = new ef('\n\
->td.{{elapsedClassName}}\n\
+>td.Query.{{elapsedClassName}}\n\
 	.{{formatElapsed}}\n\
 	>div.popover.left\n\
 		>div.popover-content\n\
@@ -45,7 +45,9 @@ function renderTr(db, index) {
 }
 
 function renderTb(databases) {
+	ef.inform()
 	for (var i in databases) renderTr(databases[i], i)
+	ef.exec()
 }
 
 function loadSamples() {
