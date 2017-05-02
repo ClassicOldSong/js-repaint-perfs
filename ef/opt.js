@@ -1,9 +1,9 @@
-var _app = new ef('\n\
+var _app = ef.create('\n\
 >table.table.table-striped.latest-data\n\
 	>tbody\n\
 		+trs');
 
-var _tr = new ef('\n\
+var _tr = ef.create('\n\
 >tr\n\
 	>td.dbname\n\
 		.{{dbname}}\n\
@@ -12,7 +12,7 @@ var _tr = new ef('\n\
 			.{{lastSample.nbQueries}}\n\
 	+tds');
 
-var _td = new ef('\n\
+var _td = ef.create('\n\
 >td.Query.{{elapsedClassName}}\n\
 	.{{formatElapsed}}\n\
 	>div.popover.left\n\
@@ -20,10 +20,10 @@ var _td = new ef('\n\
 			.{{query}}\n\
 		>div.arrow');
 
-var app = _app.render()
+var app = new _app()
 
 function renderTd(tr, q, index) {
-	if (!tr.tds[index]) tr.tds.push(_td.render())
+	if (!tr.tds[index]) tr.tds.push(new _td())
 	tr.tds[index].$data = {
 		elapsedClassName: q.elapsedClassName,
 		formatElapsed: q.formatElapsed,
@@ -32,7 +32,7 @@ function renderTd(tr, q, index) {
 }
 
 function renderTr(db, index) {
-	if (!app.trs[index]) app.trs.push(_tr.render())
+	if (!app.trs[index]) app.trs.push(new _tr())
 	var tr = app.trs[index]
 	tr.$data = {
 		dbname: db.dbname,
