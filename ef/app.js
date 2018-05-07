@@ -56,5 +56,5 @@ function loadSamples() {
   setTimeout(loadSamples, ENV.timeout);
 }
 
-document.querySelector('#app').appendChild(app.$element)
+app.$mount({target: document.querySelector('#app')})
 loadSamples()
